@@ -67,11 +67,13 @@ co(BACK)
 if (resDV == 0){
 	dd("sd:/warmboot_mariko");
     df("sd:/atmosphere/contents/010B6ECF3B30D000/01/01001FF3CDEC5000");
+    df("sd:/bootloader/payloads/ATLAS.bin");
 }
 
 if (resDV == 1){
     dd("sd:/switch/Reboot2payload");
     df("sd:/atmosphere/contents/010B6ECF3B30D000/01/01001FF3CDEC5000");
+    df("sd:/bootloader/payloads/ATLAS.bin");
 	df("sd:/boot.dat");
 	df("sd:/boot.ini");
 }
