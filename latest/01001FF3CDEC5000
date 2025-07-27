@@ -66,6 +66,7 @@ co(BACK)
 
 if (resDV == 0){
 	dd("sd:/warmboot_mariko");
+    df("sd:/atmosphere/contents/010B6ECF3B30D000/01/01001FF3CDEC5000");
 }
 
 if (resDV == 1){
