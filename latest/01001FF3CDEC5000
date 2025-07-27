@@ -1,0 +1,82 @@
+# Hex Color
+BACK=0x1B1B1B
+BLUE=0x00DDFF
+LIME=0x9FEEC3
+TEAL=0xC0D1E7
+OLIVE=0x8CB3BE
+WHITE=0xFFFFFF
+GREEN=0x009A87
+MAROON=0x6B8EFF
+ORANGE=0xF89009
+SILVER=0x9D9D9D
+VIOLET=0xC1BEF9
+YELLOW=0xEEC123
+MAGENTA=0xEF5369
+
+# Default settings
+co=color
+cd=copydir
+cf=copyfile
+dd=deldir
+df=delfile
+md=mkdir
+pt=print
+pl=println
+pp=printpos
+pe={pause() exit()}
+wait={t=timer()while(timer()<(t+tw)){print()}}
+
+
+# ASAP Install Supporter process: BACKUP & DELETE
+clear();
+pp(21,07)co(MAROON)pl("    ___   ______  __     ___    _____");
+pp(21,08)co(MAROON)pl("   /   | /_  __/ / /    /   |  / ___/");
+pp(21,09)co(MAROON)pl("  / /| |  / /   / /    / /| |  \__ \ ");
+pp(21,10)co(MAROON)pl(" / ___ | / /   / /___ / ___ | ___/ / ");
+pp(21,11)co(MAROON)pl("/_/  |_|/_/   /_____//_/  |_|/____/  ");
+pp(45,13)co(YELLOW)pl("only for ASAP");
+pp(18,15)co(TEAL)pl("===========================================");
+pp(28,17)co(BLUE)pl("ASAP Install Supporter");
+pp(22,19)co(LIME)pl("-----------------------------------");
+pp(23,21)co(SILVER)pt("- ")co(TEAL)pt("Move  ")co(SILVER)pt(": ")co(VIOLET)pt("[Volum]")co(SILVER)pt("|")co(VIOLET)pt("[D-Pad]")co(SILVER)pt("|")co(VIOLET)pl("[Stick]");
+pp(23,22)co(SILVER)pt("- ")co(TEAL)pt("Select")co(SILVER)pt(": ")co(VIOLET)pt("[Power]")co(SILVER)pt("|")co(VIOLET)pl("[A]");
+pp(18,24)co(TEAL)pl("===========================================");
+pp(19,26)co(WHITE)pt("[")co(ORANGE)pt(" STEP.1 ")co(WHITE)pt("]")co(LIME)pl(" Backup & Delete files/folders");
+pp(13,28)co(TEAL)pl("-----------------------------------------------------");
+pp(13,29)co(TEAL)pl();
+
+# backup inmportant file and folder
+pp(15,30)co(OLIVE);
+# if update ASAP
+cf("sd:/atmosphere/package3_", "sd:/atmosphere/package3");
+cf("sd:/atmosphere/stratosphere_.romfs", "sd:/atmosphere/stratosphere.romfs");
+cf("sd:/backup/keys/prod.keys", "sd:/switch/prod.keys");
+cf("sd:/backup/keys/title.keys", "sd:/switch/title.keys");
+df("sd:/atmosphere/package3_");
+df("sd:/atmosphere/stratosphere_.romfs");
+
+pp(01,30)co(SILVER)pt("                                   -")co(GREEN)pt(" Done ")co(SILVER)pl("-                                   ");
+wait(tw = 1000);
+
+# ASAP Install Supporter process: DEVICE
+pp(19,26)co(WHITE)pt("   [")co(ORANGE)pt(" STEP.2 ")co(WHITE)pt("]")co(MAGENTA)pl(" Select your device type   ");
+pp(27,30)opDV=["* Erista [Old/Patched]", "* Mariko [IBL/Lite/OLED]"];
+resDV=menu(opDV, 1);
+co(BACK)
+
+if (resDV == 0){
+	dd("sd:/warmboot_mariko");
+}
+
+if (resDV == 1){
+    dd("sd:/switch/Reboot2payload");
+    df("sd:/atmosphere/contents/010B6ECF3B30D000/01/01001FF3CDEC5000");
+	df("sd:/boot.dat");
+	df("sd:/boot.ini");
+}
+
+pp(24,30)co(SILVER)pt("-")co(GREEN)pt(" Install or Update Completed ")co(SILVER)pl("-");
+pp(27,31)co(BACK)pl("                        ");
+pp(22,32)co(ORANGE)pl("Auto Reboot to ASAP after 3 seconds");
+wait(tw = 3000);
+payload("sd:/payload.bin");
